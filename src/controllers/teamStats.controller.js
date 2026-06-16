@@ -169,6 +169,45 @@ export const getSingleTeamStats = async (req, res) => {
 // };
 
 
+// -----------------------------------------------------
+// GET PER-PLAYER STATS FOR A TEAM (latest stats per player)
+// -----------------------------------------------------
+export const getTeamPlayersStats = async (req, res) => {
+  try {
+    const teamId = req.params.teamId;
+
+    const [rows] = await pool.query(
+      `
+      SELECT
+        p.p_id, p.p_name, p.p_email, p.p_age,
+        ps.matches, ps.goals, ps.assists, ps.shots, ps.shots_on_goal,
+        ps.big_chances, ps.key_passes, ps.tackles, ps.pass_completion_pct,
+        ps.minutes, ps.cautions, ps.ejections, ps.progressive_carries, ps.defensive_actions
+      FROM players p
+      LEFT JOIN (
+        SELECT ps1.*
+        FROM player_stats ps1
+        INNER JOIN (
+          SELECT player_id, MAX(created_at) AS max_created
+          FROM player_stats
+          GROUP BY player_id
+        ) latest ON ps1.player_id = latest.player_id AND ps1.created_at = latest.max_created
+      ) ps ON ps.player_id = p.p_id
+      WHERE p.team_id = ?
+      ORDER BY p.p_name ASC
+      `,
+      [teamId]
+    );
+
+    return res.json({ success: true, players: rows });
+
+  } catch (err) {
+    console.error("getTeamPlayersStats error:", err);
+    return res.status(500).json({ message: "Failed to load team players stats" });
+  }
+};
+
+
 export const getTeamStatsAverage = async (req, res) => {
   try {
     const teamId = req.params.teamId;

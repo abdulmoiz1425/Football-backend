@@ -1,5 +1,23 @@
 // src/controllers/coachStats.controller.js
+import crypto from "crypto";
 import { pool } from "../../config/db.js";
+import { mailer } from "../../utils/mailer.js";
+import { linearRegression, poissonDistribution } from "../utils/mathStats.js";
+
+// Stats tracked per player/team that the probability framework can be generalized to
+const PROBABILITY_STAT_KEYS = [
+  "goals",
+  "assists",
+  "shots",
+  "shots_on_goal",
+  "big_chances",
+  "key_passes",
+  "tackles",
+  "cautions",
+  "ejections",
+  "progressive_carries",
+  "defensive_actions",
+];
 
 
 // export const addPlayerStats = async (req, res) => {
@@ -505,43 +523,62 @@ export const getPlayerStatsAverage = async (req, res) => {
 //   }
 // };
 
-export const updatePlayerStats = async (req, res) => {
-  try {
-    const playerId = req.params.playerId;
-    const data = req.body;
+// Shared logic: updates the player's latest player_stats record with the
+// given fields, then recomputes the matching team_stats row from all of
+// that team's players for the same year. Used by both the coach-authenticated
+// update endpoint and the public (token-based) player submission endpoint.
+const applyStatsUpdate = async (playerId, data) => {
+  // 1️⃣ Get player's team
+  const [[player]] = await pool.query(
+    `SELECT team_id FROM players WHERE p_id = ?`,
+    [playerId]
+  );
 
-    // 1️⃣ Get player's team
-    const [[player]] = await pool.query(
-      `SELECT team_id FROM players WHERE p_id = ?`,
-      [playerId]
+  if (!player || !player.team_id) {
+    throw { status: 400, message: "Player team not found" };
+  }
+
+  const teamId = player.team_id;
+
+  // 2️⃣ Latest stats record (if any)
+  const [statsRows] = await pool.query(
+    `SELECT * FROM player_stats
+     WHERE player_id = ?
+     ORDER BY created_at DESC
+     LIMIT 1`,
+    [playerId]
+  );
+
+  const stat = statsRows[0];
+  const year = stat?.year ?? new Date().getFullYear();
+
+  // 3️⃣ Derived values
+  const matches = data.matches ?? stat?.matches ?? 0;
+  const minutes = matches * 90;
+  const field = (key) => data[key] ?? stat?.[key] ?? 0;
+
+  let psId;
+
+  if (!stat) {
+    // First-ever stats record for this player
+    const [result] = await pool.query(
+      `
+      INSERT INTO player_stats (
+        player_id, year, matches, goals, assists, shots, shots_on_goal,
+        big_chances, key_passes, tackles, pass_completion_pct, minutes,
+        cautions, ejections, progressive_carries, defensive_actions, created_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())
+      `,
+      [
+        playerId, year, matches, field("goals"), field("assists"), field("shots"),
+        field("shots_on_goal"), field("big_chances"), field("key_passes"), field("tackles"),
+        field("pass_completion_pct"), minutes, field("cautions"), field("ejections"),
+        field("progressive_carries"), field("defensive_actions")
+      ]
     );
-
-    if (!player || !player.team_id) {
-      return res.status(400).json({ message: "Player team not found" });
-    }
-
-    const teamId = player.team_id;
-
-    // 2️⃣ Latest stats record
-    const [statsRows] = await pool.query(
-      `SELECT * FROM player_stats 
-       WHERE player_id = ? 
-       ORDER BY created_at DESC 
-       LIMIT 1`,
-      [playerId]
-    );
-
-    if (statsRows.length === 0) {
-      return res.status(404).json({ message: "No player stats found" });
-    }
-
-    const stat = statsRows[0];
-    const psId = stat.ps_id;
-    const year = stat.year;
-
-    // 3️⃣ Derived values
-    const matches = data.matches ?? stat.matches;
-    const minutes = matches * 90;
+    psId = result.insertId;
+  } else {
+    psId = stat.ps_id;
 
     // 4️⃣ UPDATE player_stats (✅ SAME RECORD)
     await pool.query(
@@ -554,30 +591,50 @@ export const updatePlayerStats = async (req, res) => {
       WHERE ps_id = ?
       `,
       [
-        matches,
-        data.goals ?? stat.goals,
-        data.assists ?? stat.assists,
-        data.shots ?? stat.shots,
-        data.shots_on_goal ?? stat.shots_on_goal,
-        data.big_chances ?? stat.big_chances,
-        data.key_passes ?? stat.key_passes,
-        data.tackles ?? stat.tackles,
-        data.pass_completion_pct ?? stat.pass_completion_pct,
-        minutes,
-        data.cautions ?? stat.cautions,
-        data.ejections ?? stat.ejections,
-        data.progressive_carries ?? stat.progressive_carries,
-        data.defensive_actions ?? stat.defensive_actions,
-        psId
+        matches, field("goals"), field("assists"), field("shots"), field("shots_on_goal"),
+        field("big_chances"), field("key_passes"), field("tackles"), field("pass_completion_pct"),
+        minutes, field("cautions"), field("ejections"), field("progressive_carries"),
+        field("defensive_actions"), psId
       ]
     );
+  }
 
-    // 5️⃣ 🔥 UPDATE team_stats (NO INSERT)
+  // 5️⃣ Recalculate team_stats for this team/year (insert if missing, else update)
+  const [[existingTeamStats]] = await pool.query(
+    `SELECT ts_id FROM team_stats WHERE team_id = ? AND year = ?`,
+    [teamId, year]
+  );
+
+  if (!existingTeamStats) {
+    await pool.query(
+      `
+      INSERT INTO team_stats (
+        team_id, year, matches, goals, assists, shots, shots_on_goal,
+        big_chances, key_passes, tackles, pass_completion_pct, minutes,
+        cautions, ejections, progressive_carries, defensive_actions, created_at
+      )
+      SELECT
+        p.team_id, ps.year,
+        ? AS matches,
+        SUM(ps.goals), SUM(ps.assists), SUM(ps.shots), SUM(ps.shots_on_goal),
+        SUM(ps.big_chances), SUM(ps.key_passes), SUM(ps.tackles),
+        AVG(ps.pass_completion_pct),
+        (? * 90) AS minutes,
+        SUM(ps.cautions), SUM(ps.ejections), SUM(ps.progressive_carries), SUM(ps.defensive_actions),
+        NOW()
+      FROM players p
+      JOIN player_stats ps ON ps.player_id = p.p_id
+      WHERE p.team_id = ? AND ps.year = ?
+      GROUP BY p.team_id, ps.year
+      `,
+      [matches, matches, teamId, year]
+    );
+  } else {
     await pool.query(
       `
       UPDATE team_stats ts
       JOIN (
-        SELECT 
+        SELECT
           p.team_id,
           ps.year,
           SUM(ps.goals) AS goals,
@@ -617,6 +674,15 @@ export const updatePlayerStats = async (req, res) => {
       `,
       [matches, teamId, year, matches]
     );
+  }
+
+  return { psId };
+};
+
+export const updatePlayerStats = async (req, res) => {
+  try {
+    const playerId = req.params.playerId;
+    const { psId } = await applyStatsUpdate(playerId, req.body);
 
     return res.json({
       success: true,
@@ -625,11 +691,279 @@ export const updatePlayerStats = async (req, res) => {
     });
 
   } catch (err) {
+    if (err.status) return res.status(err.status).json({ message: err.message });
     console.error("updatePlayerStats error:", err);
     res.status(500).json({ message: "Failed to update stats" });
   }
 };
 
+// ===========================================================================
+// "Send Link to Player" feature — lets a coach email a player a one-time
+// link so the player can fill in their own stats without logging in.
+// ===========================================================================
+
+// Coach-authenticated: generates a one-time token and emails the player a
+// link to the public stats form.
+export const sendStatsLinkToPlayer = async (req, res) => {
+  try {
+    const coachId = req.user.id;
+    const playerId = req.params.playerId;
+
+    const [rows] = await pool.query(
+      `SELECT p_email, p_name FROM players WHERE p_id = ? AND p_added_by = ?`,
+      [playerId, coachId]
+    );
+
+    if (rows.length === 0) {
+      return res.status(404).json({ message: "Player not found" });
+    }
+
+    const player = rows[0];
+
+    if (!player.p_email) {
+      return res.status(400).json({ message: "This player has no email on file" });
+    }
+
+    const token = crypto.randomBytes(32).toString("hex");
+
+    await pool.query(
+      `INSERT INTO stats_tokens (player_id, token, is_used) VALUES (?, ?, 0)`,
+      [playerId, token]
+    );
+
+    const statsLink = `${process.env.BASE_FRONTEND_URL}/player-stats/${playerId}?token=${token}`;
+
+    await mailer.sendMail({
+      from: `"Football Stats" <${process.env.SMTP_USER}>`,
+      to: player.p_email,
+      subject: "Update Your Player Stats",
+      html: `
+        <p>Hi <strong>${player.p_name}</strong>,</p>
+        <p>Your coach has requested that you fill in your latest match stats. Please use the link below:</p>
+        <p>
+          <a href="${statsLink}"
+             style="padding:10px 20px;background:#007bff;color:#fff;text-decoration:none;border-radius:5px;">
+             Update My Stats
+          </a>
+        </p>
+        <br />
+        <p>If the button doesn't work, use this link:</p>
+        <p>${statsLink}</p>
+      `,
+    });
+
+    return res.json({
+      success: true,
+      message: "Stats link sent successfully",
+      email: player.p_email,
+      link: statsLink,
+    });
+
+  } catch (err) {
+    console.error("sendStatsLinkToPlayer error:", err);
+    return res.status(500).json({ message: "Failed to send stats link" });
+  }
+};
+
+// Public: verifies a stats token and returns the player's current stats so
+// the form can be pre-filled.
+export const verifyStatsToken = async (req, res) => {
+  try {
+    const { player, token } = req.query;
+
+    const [[tokenRow]] = await pool.query(
+      "SELECT * FROM stats_tokens WHERE player_id = ? AND token = ?",
+      [player, token]
+    );
+
+    if (!tokenRow) {
+      return res.status(400).json({ message: "Invalid or expired link" });
+    }
+
+    if (tokenRow.is_used === 1) {
+      return res.status(400).json({ message: "This link has already been used" });
+    }
+
+    const [[playerRow]] = await pool.query(
+      `SELECT p_name FROM players WHERE p_id = ?`,
+      [player]
+    );
+
+    const [statsRows] = await pool.query(
+      `SELECT * FROM player_stats WHERE player_id = ? ORDER BY created_at DESC LIMIT 1`,
+      [player]
+    );
+
+    return res.json({
+      success: true,
+      playerName: playerRow?.p_name || "",
+      stats: statsRows[0] || null,
+    });
+  } catch (err) {
+    console.error("verifyStatsToken error:", err);
+    return res.status(500).json({ message: "Failed to verify link" });
+  }
+};
+
+// Public: player submits their own stats using the one-time token.
+export const publicSubmitPlayerStats = async (req, res) => {
+  try {
+    const { player_id, token, ...data } = req.body;
+
+    if (!player_id || !token) {
+      return res.status(400).json({ message: "Missing player_id or token" });
+    }
+
+    const [[tokenRow]] = await pool.query(
+      "SELECT * FROM stats_tokens WHERE player_id = ? AND token = ?",
+      [player_id, token]
+    );
+
+    if (!tokenRow) {
+      return res.status(400).json({ message: "Invalid or expired link" });
+    }
+
+    if (tokenRow.is_used === 1) {
+      return res.status(400).json({ message: "This link has already been used" });
+    }
+
+    await applyStatsUpdate(player_id, data);
+
+    await pool.query(
+      "UPDATE stats_tokens SET is_used = 1 WHERE player_id = ? AND token = ?",
+      [player_id, token]
+    );
+
+    return res.json({
+      success: true,
+      message: "Stats submitted successfully. Link expired.",
+    });
+  } catch (err) {
+    if (err.status) return res.status(err.status).json({ message: err.message });
+    console.error("publicSubmitPlayerStats error:", err);
+    return res.status(500).json({ message: "Failed to submit stats" });
+  }
+};
+
+
+// Predicts a player's expected goals using a linear regression model fitted
+// on every player's latest stats (matches, assists, shots_on_goal, key_passes -> goals).
+// The model is refit on every request so it adapts as more stats are recorded.
+export const getExpectedGoals = async (req, res) => {
+  try {
+    const playerId = req.params.playerId;
+
+    // Latest stats row per player (training data for the regression)
+    const [rows] = await pool.query(`
+      SELECT ps.player_id, ps.matches, ps.goals, ps.assists, ps.shots_on_goal, ps.key_passes
+      FROM player_stats ps
+      INNER JOIN (
+        SELECT player_id, MAX(created_at) AS latest
+        FROM player_stats
+        GROUP BY player_id
+      ) latest
+        ON latest.player_id = ps.player_id AND latest.latest = ps.created_at
+    `);
+
+    const target = rows.find((r) => String(r.player_id) === String(playerId));
+    if (!target) {
+      return res.status(404).json({ message: "No stats found for this player" });
+    }
+
+    // Need more data points than coefficients (intercept + 4 predictors)
+    if (rows.length < 6) {
+      return res.status(400).json({
+        message: "Not enough player stats recorded yet to build a prediction model",
+        sampleSize: rows.length,
+      });
+    }
+
+    const X = rows.map((r) => [1, r.matches || 0, r.assists || 0, r.shots_on_goal || 0, r.key_passes || 0]);
+    const y = rows.map((r) => r.goals || 0);
+
+    const [intercept, bMatches, bAssists, bShotsOnGoal, bKeyPasses] = linearRegression(X, y);
+
+    const expectedGoals =
+      intercept +
+      bMatches * (target.matches || 0) +
+      bAssists * (target.assists || 0) +
+      bShotsOnGoal * (target.shots_on_goal || 0) +
+      bKeyPasses * (target.key_passes || 0);
+
+    return res.json({
+      success: true,
+      playerId,
+      actualGoals: target.goals || 0,
+      expectedGoals,
+      diff: Math.abs(expectedGoals - (target.goals || 0)),
+      coefficients: {
+        intercept,
+        matches: bMatches,
+        assists: bAssists,
+        shotsOnGoal: bShotsOnGoal,
+        keyPasses: bKeyPasses,
+      },
+      sampleSize: rows.length,
+    });
+  } catch (err) {
+    console.error("getExpectedGoals error:", err);
+    return res.status(500).json({ message: "Failed to calculate expected goals" });
+  }
+};
+
+// Poisson probability distribution (P(X = 0..maxK)) for every tracked stat,
+// comparing the player's per-match rate against their team's per-match rate.
+export const getStatProbabilities = async (req, res) => {
+  try {
+    const playerId = req.params.playerId;
+    const maxK = Math.min(Math.max(parseInt(req.query.maxK) || 5, 1), 20);
+
+    const [playerRow] = await pool.query(`SELECT team_id FROM players WHERE p_id = ?`, [playerId]);
+    if (playerRow.length === 0) {
+      return res.status(404).json({ message: "Player not found" });
+    }
+    const teamId = playerRow[0].team_id;
+
+    const [pRows] = await pool.query(
+      `SELECT * FROM player_stats WHERE player_id = ? ORDER BY created_at DESC LIMIT 1`,
+      [playerId]
+    );
+
+    if (pRows.length === 0) {
+      return res.json({ success: true, matches: { player: 0, team: 0 }, stats: {} });
+    }
+
+    const p = pRows[0];
+    const pm = p.matches || 0;
+
+    const [tRows] = await pool.query(
+      `SELECT * FROM team_stats WHERE team_id = ? ORDER BY created_at DESC LIMIT 1`,
+      [teamId]
+    );
+    const t = tRows[0] || {};
+    const tm = t.matches || 0;
+
+    const stats = {};
+    for (const key of PROBABILITY_STAT_KEYS) {
+      const playerLambda = pm ? (p[key] || 0) / pm : 0;
+      const teamLambda = tm ? (t[key] || 0) / tm : 0;
+
+      stats[key] = {
+        player: { lambda: playerLambda, distribution: poissonDistribution(playerLambda, maxK) },
+        team: { lambda: teamLambda, distribution: poissonDistribution(teamLambda, maxK) },
+      };
+    }
+
+    return res.json({
+      success: true,
+      matches: { player: pm, team: tm },
+      stats,
+    });
+  } catch (err) {
+    console.error("getStatProbabilities error:", err);
+    return res.status(500).json({ message: "Failed to calculate stat probabilities" });
+  }
+};
 
 export const updateTeamStats = async (req, res) => {
   try {
