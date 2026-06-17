@@ -758,6 +758,34 @@ export const sendStatsLinkToPlayer = async (req, res) => {
         <br />
         <p>If the button doesn't work, use this link:</p>
         <p>${statsLink}</p>
+        <br />
+        <hr />
+        <h3 style="color:#333;">Stat Definitions</h3>
+        <p style="color:#555;">Please refer to the definitions below while filling in your stats:</p>
+        <table style="border-collapse:collapse;width:100%;font-size:14px;">
+          <thead>
+            <tr style="background:#007bff;color:#fff;">
+              <th style="padding:8px 12px;text-align:left;border:1px solid #ddd;">Stat</th>
+              <th style="padding:8px 12px;text-align:left;border:1px solid #ddd;">Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#f9f9f9;"><td style="padding:8px 12px;border:1px solid #ddd;"><strong>Matches</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">Total matches played during a season</td></tr>
+            <tr><td style="padding:8px 12px;border:1px solid #ddd;"><strong>Goals</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">The total number of goals scored by a player in a season</td></tr>
+            <tr style="background:#f9f9f9;"><td style="padding:8px 12px;border:1px solid #ddd;"><strong>Assists</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">Passes that directly lead to a goal being scored in a season</td></tr>
+            <tr><td style="padding:8px 12px;border:1px solid #ddd;"><strong>Shots</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">The total number of attempts a player makes to score, including shots on target and those that miss the goal in a season</td></tr>
+            <tr style="background:#f9f9f9;"><td style="padding:8px 12px;border:1px solid #ddd;"><strong>Shots On Goal</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">The number of shots that are on target, meaning they would have resulted in a goal if not saved by the goalkeeper in a season</td></tr>
+            <tr><td style="padding:8px 12px;border:1px solid #ddd;"><strong>Big Chances</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">Situations where a player is expected to score, typically in one-on-one scenarios or from very close range. This includes penalties in a season</td></tr>
+            <tr style="background:#f9f9f9;"><td style="padding:8px 12px;border:1px solid #ddd;"><strong>Key Passes</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">Passes that lead directly to a shot on goal, indicating a player's ability to create scoring opportunities in a season</td></tr>
+            <tr><td style="padding:8px 12px;border:1px solid #ddd;"><strong>Tackles</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">Defensive actions where a player attempts to take the ball away from an opponent. This can be categorized into tackles won and tackles lost in a season</td></tr>
+            <tr style="background:#f9f9f9;"><td style="padding:8px 12px;border:1px solid #ddd;"><strong>Pass %</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">The ratio of successful passes to total passes attempted, indicating a player's passing accuracy in a season</td></tr>
+            <tr><td style="padding:8px 12px;border:1px solid #ddd;"><strong>Minutes</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">The total time a player spends on the field during matches, which can be crucial for evaluating their overall contribution in a season</td></tr>
+            <tr style="background:#f9f9f9;"><td style="padding:8px 12px;border:1px solid #ddd;"><strong>Cautions</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">Yellow cards received by a player, which can impact their availability for future matches in a season</td></tr>
+            <tr><td style="padding:8px 12px;border:1px solid #ddd;"><strong>Ejections</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">Red cards received by a player, which can impact their availability for future matches in a season</td></tr>
+            <tr style="background:#f9f9f9;"><td style="padding:8px 12px;border:1px solid #ddd;"><strong>Progressive Carries</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">Instances where a player carries the ball forward more than five meters, contributing to the team's attacking play in a season</td></tr>
+            <tr><td style="padding:8px 12px;border:1px solid #ddd;"><strong>Defensive Actions</strong></td><td style="padding:8px 12px;border:1px solid #ddd;">Includes tackles, interceptions, and blocks made by a player, reflecting their defensive contributions in a season</td></tr>
+          </tbody>
+        </table>
       `,
     });
 
