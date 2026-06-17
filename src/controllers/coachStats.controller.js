@@ -1,8 +1,16 @@
 // src/controllers/coachStats.controller.js
 import crypto from "crypto";
+import { readFileSync } from "fs";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
 import { pool } from "../../config/db.js";
 import { mailer } from "../../utils/mailer.js";
-import { poissonDistribution } from "../utils/mathStats.js";
+import { linearRegression, poissonDistribution } from "../utils/mathStats.js";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const surveyData = JSON.parse(
+  readFileSync(join(__dirname, "../data/expectedGoalsSurvey.json"), "utf-8")
+);
 
 // Stats tracked per player/team that the probability framework can be generalized to
 const PROBABILITY_STAT_KEYS = [
@@ -847,49 +855,41 @@ export const publicSubmitPlayerStats = async (req, res) => {
 };
 
 
-// Predicts a player's expected goals using Shots on Goal conversion rate.
-// Expected Goals = Player's Shots on Goal × (Team Goals / Team Shots on Goal)
+// Predicts a player's expected goals using linear regression trained on the
+// client's 209-row survey dataset (Sheet2 of Expected Goals (Responses).xlsx).
+// Inputs: Matches, Assists, SOG, Key Passes → Target: Expected Goals (client's values)
 export const getExpectedGoals = async (req, res) => {
   try {
     const playerId = req.params.playerId;
 
-    // Get player's team
-    const [[playerRow]] = await pool.query(
-      `SELECT team_id FROM players WHERE p_id = ?`,
-      [playerId]
-    );
-    if (!playerRow) {
-      return res.status(404).json({ message: "Player not found" });
-    }
-    const teamId = playerRow.team_id;
-
     // Get player's latest stats
     const [[playerStats]] = await pool.query(
-      `SELECT goals, shots_on_goal FROM player_stats WHERE player_id = ? ORDER BY created_at DESC LIMIT 1`,
+      `SELECT goals, matches, assists, shots_on_goal, key_passes
+       FROM player_stats WHERE player_id = ? ORDER BY created_at DESC LIMIT 1`,
       [playerId]
     );
     if (!playerStats) {
       return res.status(404).json({ message: "No stats found for this player" });
     }
 
-    // Get team's latest stats
-    const [[teamStats]] = await pool.query(
-      `SELECT goals, shots_on_goal FROM team_stats WHERE team_id = ? ORDER BY created_at DESC LIMIT 1`,
-      [teamId]
-    );
-    if (!teamStats || !teamStats.shots_on_goal) {
-      return res.status(400).json({ message: "No team stats available to calculate conversion rate" });
-    }
+    // Train regression on survey data: Matches, Assists, SOG, KeyPasses → Expected Goals
+    const X = surveyData.map(r => [1, r.matches, r.assists, r.shots_on_goal, r.key_passes]);
+    const y = surveyData.map(r => r.expected_goals);
 
-    const teamConversionRate = teamStats.goals / teamStats.shots_on_goal;
-    const expectedGoals = (playerStats.shots_on_goal || 0) * teamConversionRate;
+    const [intercept, bMatches, bAssists, bSOG, bKeyPasses] = linearRegression(X, y);
+
+    const expectedGoals =
+      intercept +
+      bMatches    * (playerStats.matches       || 0) +
+      bAssists    * (playerStats.assists        || 0) +
+      bSOG        * (playerStats.shots_on_goal  || 0) +
+      bKeyPasses  * (playerStats.key_passes     || 0);
 
     return res.json({
       success: true,
       playerId,
-      actualGoals: playerStats.goals || 0,
-      expectedGoals,
-      conversionRate: (teamConversionRate * 100).toFixed(1),
+      actualGoals:   playerStats.goals || 0,
+      expectedGoals: Math.max(0, expectedGoals),
     });
   } catch (err) {
     console.error("getExpectedGoals error:", err);

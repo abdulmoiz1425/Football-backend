@@ -1,1465 +1,1465 @@
 [
   {
     "matches": 10,
-    "goals": 21,
     "assists": 102,
     "shots_on_goal": 57,
-    "key_passes": 70
+    "key_passes": 70,
+    "expected_goals": 5.825000000000001
   },
   {
     "matches": 21,
-    "goals": 44,
     "assists": 54,
     "shots_on_goal": 50,
-    "key_passes": 56
+    "key_passes": 56,
+    "expected_goals": 13.057999999999998
   },
   {
     "matches": 12,
-    "goals": 30,
     "assists": 54,
     "shots_on_goal": 45,
-    "key_passes": 32
+    "key_passes": 32,
+    "expected_goals": 7.161000000000001
   },
   {
     "matches": 34,
-    "goals": 56,
     "assists": 59,
     "shots_on_goal": 40,
-    "key_passes": 50
+    "key_passes": 50,
+    "expected_goals": 22.941
   },
   {
     "matches": 45,
-    "goals": 60,
     "assists": 100,
     "shots_on_goal": 56,
-    "key_passes": 46
+    "key_passes": 46,
+    "expected_goals": 30.626000000000005
   },
   {
     "matches": 20,
-    "goals": 43,
     "assists": 68,
     "shots_on_goal": 43,
-    "key_passes": 56
+    "key_passes": 56,
+    "expected_goals": 13.060999999999998
   },
   {
     "matches": 46,
-    "goals": 64,
     "assists": 100,
     "shots_on_goal": 54,
-    "key_passes": 76
+    "key_passes": 76,
+    "expected_goals": 31.268000000000004
   },
   {
     "matches": 20,
-    "goals": 13,
     "assists": 44,
     "shots_on_goal": 45,
-    "key_passes": 77
+    "key_passes": 77,
+    "expected_goals": 12.312999999999999
   },
   {
     "matches": 11,
-    "goals": 15,
     "assists": 43,
     "shots_on_goal": 44,
-    "key_passes": 64
+    "key_passes": 64,
+    "expected_goals": 6.093
   },
   {
     "matches": 16,
-    "goals": 12,
     "assists": 34,
     "shots_on_goal": 44,
-    "key_passes": 65
+    "key_passes": 65,
+    "expected_goals": 9.418
   },
   {
     "matches": 17,
-    "goals": 9,
     "assists": 97,
     "shots_on_goal": 58,
-    "key_passes": 37
+    "key_passes": 37,
+    "expected_goals": 10.787
   },
   {
     "matches": 20,
-    "goals": 15,
     "assists": 33,
     "shots_on_goal": 65,
-    "key_passes": 45
+    "key_passes": 45,
+    "expected_goals": 11.093999999999998
   },
   {
     "matches": 23,
-    "goals": 6,
     "assists": 64,
     "shots_on_goal": 34,
-    "key_passes": 29
+    "key_passes": 29,
+    "expected_goals": 15.782
   },
   {
     "matches": 22,
-    "goals": 11,
     "assists": 45,
     "shots_on_goal": 32,
-    "key_passes": 43
+    "key_passes": 43,
+    "expected_goals": 14.712999999999997
   },
   {
     "matches": 30,
-    "goals": 22,
     "assists": 32,
     "shots_on_goal": 57,
-    "key_passes": 60
+    "key_passes": 60,
+    "expected_goals": 18.494999999999997
   },
   {
     "matches": 15,
-    "goals": 9,
     "assists": 3,
     "shots_on_goal": 10,
-    "key_passes": 4
+    "key_passes": 4,
+    "expected_goals": 10.435
   },
   {
     "matches": 34,
-    "goals": 25,
     "assists": 44,
     "shots_on_goal": 65,
-    "key_passes": 40
+    "key_passes": 40,
+    "expected_goals": 21.211
   },
   {
     "matches": 18,
-    "goals": 10,
     "assists": 109,
     "shots_on_goal": 98,
-    "key_passes": 34
+    "key_passes": 34,
+    "expected_goals": 9.400999999999998
   },
   {
     "matches": 23,
-    "goals": 8,
     "assists": 78,
     "shots_on_goal": 34,
-    "key_passes": 17
+    "key_passes": 17,
+    "expected_goals": 16.148
   },
   {
     "matches": 23,
-    "goals": 12,
     "assists": 32,
     "shots_on_goal": 54,
-    "key_passes": 50
+    "key_passes": 50,
+    "expected_goals": 13.803999999999998
   },
   {
     "matches": 34,
-    "goals": 24,
     "assists": 32,
     "shots_on_goal": 55,
-    "key_passes": 30
+    "key_passes": 30,
+    "expected_goals": 21.608999999999998
   },
   {
     "matches": 21,
-    "goals": 7,
     "assists": 208,
     "shots_on_goal": 69,
-    "key_passes": 34
+    "key_passes": 34,
+    "expected_goals": 15.302999999999999
   },
   {
     "matches": 12,
-    "goals": 10,
     "assists": 33,
     "shots_on_goal": 40,
-    "key_passes": 34
+    "key_passes": 34,
+    "expected_goals": 7.003000000000001
   },
   {
     "matches": 7,
-    "goals": 1,
     "assists": 15,
     "shots_on_goal": 10,
-    "key_passes": 6
+    "key_passes": 6,
+    "expected_goals": 5.043000000000001
   },
   {
     "matches": 32,
-    "goals": 24,
     "assists": 56,
     "shots_on_goal": 40,
-    "key_passes": 70
+    "key_passes": 70,
+    "expected_goals": 21.349999999999994
   },
   {
     "matches": 33,
-    "goals": 12,
     "assists": 7,
     "shots_on_goal": 10,
-    "key_passes": 8
+    "key_passes": 8,
+    "expected_goals": 23.166999999999998
   },
   {
     "matches": 44,
-    "goals": 20,
     "assists": 30,
     "shots_on_goal": 65,
-    "key_passes": 54
+    "key_passes": 54,
+    "expected_goals": 27.872999999999994
   },
   {
     "matches": 37,
-    "goals": 17,
     "assists": 89,
     "shots_on_goal": 69,
-    "key_passes": 56
+    "key_passes": 56,
+    "expected_goals": 23.936
   },
   {
     "matches": 22,
-    "goals": 14,
     "assists": 30,
     "shots_on_goal": 40,
-    "key_passes": 50
+    "key_passes": 50,
+    "expected_goals": 13.884
   },
   {
     "matches": 10,
-    "goals": 4,
     "assists": 23,
     "shots_on_goal": 54,
-    "key_passes": 40
+    "key_passes": 40,
+    "expected_goals": 4.522999999999999
   },
   {
     "matches": 26,
-    "goals": 10,
     "assists": 46,
     "shots_on_goal": 30,
-    "key_passes": 26
+    "key_passes": 26,
+    "expected_goals": 17.77
   },
   {
     "matches": 10,
-    "goals": 3,
     "assists": 23,
     "shots_on_goal": 33,
-    "key_passes": 34
+    "key_passes": 34,
+    "expected_goals": 5.797999999999999
   },
   {
     "matches": 21,
-    "goals": 6,
     "assists": 26,
     "shots_on_goal": 21,
-    "key_passes": 18
+    "key_passes": 18,
+    "expected_goals": 14.408999999999999
   },
   {
     "matches": 30,
-    "goals": 26,
     "assists": 43,
     "shots_on_goal": 32,
-    "key_passes": 40
+    "key_passes": 40,
+    "expected_goals": 20.320999999999994
   },
   {
     "matches": 20,
-    "goals": 8,
     "assists": 12,
     "shots_on_goal": 34,
-    "key_passes": 29
+    "key_passes": 29,
+    "expected_goals": 12.578
   },
   {
     "matches": 29,
-    "goals": 22,
     "assists": 30,
     "shots_on_goal": 45,
-    "key_passes": 60
+    "key_passes": 60,
+    "expected_goals": 18.456999999999997
   },
   {
     "matches": 14,
-    "goals": 7,
     "assists": 32,
     "shots_on_goal": 20,
-    "key_passes": 56
+    "key_passes": 56,
+    "expected_goals": 9.438
   },
   {
     "matches": 26,
-    "goals": 12,
     "assists": 34,
     "shots_on_goal": 52,
-    "key_passes": 37
+    "key_passes": 37,
+    "expected_goals": 16.153999999999996
   },
   {
     "matches": 30,
-    "goals": 23,
     "assists": 22,
     "shots_on_goal": 54,
-    "key_passes": 50
+    "key_passes": 50,
+    "expected_goals": 18.521999999999995
   },
   {
     "matches": 12,
-    "goals": 3,
     "assists": 23,
     "shots_on_goal": 56,
-    "key_passes": 20
+    "key_passes": 20,
+    "expected_goals": 5.933000000000001
   },
   {
     "matches": 13,
-    "goals": 32,
     "assists": 12,
     "shots_on_goal": 34,
-    "key_passes": 20
+    "key_passes": 20,
+    "expected_goals": 7.704
   },
   {
     "matches": 40,
-    "goals": 32,
     "assists": 40,
     "shots_on_goal": 33,
-    "key_passes": 54
+    "key_passes": 54,
+    "expected_goals": 27.154999999999994
   },
   {
     "matches": 33,
-    "goals": 17,
     "assists": 76,
     "shots_on_goal": 86,
-    "key_passes": 50
+    "key_passes": 50,
+    "expected_goals": 19.88
   },
   {
     "matches": 22,
-    "goals": 2,
     "assists": 45,
     "shots_on_goal": 13,
-    "key_passes": 9
+    "key_passes": 9,
+    "expected_goals": 16.038
   },
   {
     "matches": 10,
-    "goals": 5,
     "assists": 23,
     "shots_on_goal": 34,
-    "key_passes": 40
+    "key_passes": 40,
+    "expected_goals": 5.702999999999999
   },
   {
     "matches": 23,
-    "goals": 12,
     "assists": 45,
     "shots_on_goal": 30,
-    "key_passes": 47
+    "key_passes": 47,
+    "expected_goals": 15.511
   },
   {
     "matches": 16,
-    "goals": 2,
     "assists": 98,
     "shots_on_goal": 53,
-    "key_passes": 20
+    "key_passes": 20,
+    "expected_goals": 10.501
   },
   {
     "matches": 45,
-    "goals": 32,
     "assists": 50,
     "shots_on_goal": 56,
-    "key_passes": 78
+    "key_passes": 78,
+    "expected_goals": 29.384
   },
   {
     "matches": 32,
-    "goals": 23,
     "assists": 198,
     "shots_on_goal": 87,
-    "key_passes": 66
+    "key_passes": 66,
+    "expected_goals": 21.583
   },
   {
     "matches": 23,
-    "goals": 13,
     "assists": 54,
     "shots_on_goal": 58,
-    "key_passes": 68
+    "key_passes": 68,
+    "expected_goals": 13.921999999999999
   },
   {
     "matches": 15,
-    "goals": 2,
     "assists": 87,
     "shots_on_goal": 29,
-    "key_passes": 25
+    "key_passes": 25,
+    "expected_goals": 10.951999999999998
   },
   {
     "matches": 33,
-    "goals": 3,
     "assists": 44,
     "shots_on_goal": 39,
-    "key_passes": 60
+    "key_passes": 60,
+    "expected_goals": 21.921
   },
   {
     "matches": 24,
-    "goals": 4,
     "assists": 138,
     "shots_on_goal": 109,
-    "key_passes": 85
+    "key_passes": 85,
+    "expected_goals": 13.278999999999998
   },
   {
     "matches": 20,
-    "goals": 10,
     "assists": 23,
     "shots_on_goal": 43,
-    "key_passes": 40
+    "key_passes": 40,
+    "expected_goals": 12.211999999999998
   },
   {
     "matches": 10,
-    "goals": 3,
     "assists": 20,
     "shots_on_goal": 33,
-    "key_passes": 39
+    "key_passes": 39,
+    "expected_goals": 5.704999999999999
   },
   {
     "matches": 13,
-    "goals": 5,
     "assists": 200,
     "shots_on_goal": 109,
-    "key_passes": 85
+    "key_passes": 85,
+    "expected_goals": 6.836999999999999
   },
   {
     "matches": 30,
-    "goals": 17,
     "assists": 30,
     "shots_on_goal": 45,
-    "key_passes": 54
+    "key_passes": 54,
+    "expected_goals": 19.196999999999992
   },
   {
     "matches": 23,
-    "goals": 13,
     "assists": 34,
     "shots_on_goal": 42,
-    "key_passes": 30
+    "key_passes": 30,
+    "expected_goals": 14.673999999999998
   },
   {
     "matches": 20,
-    "goals": 12,
     "assists": 109,
     "shots_on_goal": 90,
-    "key_passes": 45
+    "key_passes": 45,
+    "expected_goals": 11.215
   },
   {
     "matches": 20,
-    "goals": 13,
     "assists": 34,
     "shots_on_goal": 30,
-    "key_passes": 54
+    "key_passes": 54,
+    "expected_goals": 13.126
   },
   {
     "matches": 33,
-    "goals": 23,
     "assists": 43,
     "shots_on_goal": 32,
-    "key_passes": 30
+    "key_passes": 30,
+    "expected_goals": 22.492999999999995
   },
   {
     "matches": 32,
-    "goals": 21,
     "assists": 40,
     "shots_on_goal": 54,
-    "key_passes": 38
+    "key_passes": 38,
+    "expected_goals": 20.379999999999995
   },
   {
     "matches": 28,
-    "goals": 7,
     "assists": 257,
     "shots_on_goal": 204,
-    "key_passes": 56
+    "key_passes": 56,
+    "expected_goals": 13.162999999999997
   },
   {
     "matches": 32,
-    "goals": 20,
     "assists": 45,
     "shots_on_goal": 50,
-    "key_passes": 20
+    "key_passes": 20,
+    "expected_goals": 20.828999999999997
   },
   {
     "matches": 12,
-    "goals": 4,
     "assists": 43,
     "shots_on_goal": 42,
-    "key_passes": 33
+    "key_passes": 33,
+    "expected_goals": 7.101000000000001
   },
   {
     "matches": 10,
-    "goals": 6,
     "assists": 76,
     "shots_on_goal": 24,
-    "key_passes": 20
+    "key_passes": 20,
+    "expected_goals": 7.525999999999999
   },
   {
     "matches": 19,
-    "goals": 5,
     "assists": 32,
     "shots_on_goal": 54,
-    "key_passes": 44
+    "key_passes": 44,
+    "expected_goals": 11.024000000000001
   },
   {
     "matches": 12,
-    "goals": 4,
     "assists": 30,
     "shots_on_goal": 33,
-    "key_passes": 30
+    "key_passes": 30,
+    "expected_goals": 7.377000000000002
   },
   {
     "matches": 9,
-    "goals": 1,
     "assists": 34,
     "shots_on_goal": 76,
-    "key_passes": 45
+    "key_passes": 45,
+    "expected_goals": 2.722
   },
   {
     "matches": 20,
-    "goals": 14,
     "assists": 23,
     "shots_on_goal": 44,
-    "key_passes": 40
+    "key_passes": 40,
+    "expected_goals": 12.152999999999999
   },
   {
     "matches": 30,
-    "goals": 18,
     "assists": 198,
     "shots_on_goal": 106,
-    "key_passes": 56
+    "key_passes": 56,
+    "expected_goals": 19.113999999999997
   },
   {
     "matches": 22,
-    "goals": 14,
     "assists": 43,
     "shots_on_goal": 44,
-    "key_passes": 30
+    "key_passes": 30,
+    "expected_goals": 14.041
   },
   {
     "matches": 12,
-    "goals": 7,
     "assists": 33,
     "shots_on_goal": 49,
-    "key_passes": 69
+    "key_passes": 69,
+    "expected_goals": 6.2620000000000005
   },
   {
     "matches": 27,
-    "goals": 16,
     "assists": 33,
     "shots_on_goal": 29,
-    "key_passes": 40
+    "key_passes": 40,
+    "expected_goals": 18.176000000000002
   },
   {
     "matches": 23,
-    "goals": 16,
     "assists": 123,
     "shots_on_goal": 99,
-    "key_passes": 48
+    "key_passes": 48,
+    "expected_goals": 13.072000000000001
   },
   {
     "matches": 9,
-    "goals": 1,
     "assists": 23,
     "shots_on_goal": 37,
-    "key_passes": 40
+    "key_passes": 40,
+    "expected_goals": 4.821999999999999
   },
   {
     "matches": 25,
-    "goals": 19,
     "assists": 44,
     "shots_on_goal": 56,
-    "key_passes": 70
+    "key_passes": 70,
+    "expected_goals": 15.225999999999996
   },
   {
     "matches": 30,
-    "goals": 22,
     "assists": 43,
     "shots_on_goal": 63,
-    "key_passes": 67
+    "key_passes": 67,
+    "expected_goals": 18.329999999999995
   },
   {
     "matches": 23,
-    "goals": 12,
     "assists": 34,
     "shots_on_goal": 30,
-    "key_passes": 35
+    "key_passes": 35,
+    "expected_goals": 15.351999999999997
   },
   {
     "matches": 17,
-    "goals": 6,
     "assists": 300,
     "shots_on_goal": 58,
-    "key_passes": 30
+    "key_passes": 30,
+    "expected_goals": 15.092000000000002
   },
   {
     "matches": 24,
-    "goals": 10,
     "assists": 33,
     "shots_on_goal": 55,
-    "key_passes": 34
+    "key_passes": 34,
+    "expected_goals": 14.566
   },
   {
     "matches": 20,
-    "goals": 6,
     "assists": 34,
     "shots_on_goal": 40,
-    "key_passes": 59
+    "key_passes": 59,
+    "expected_goals": 12.506
   },
   {
     "matches": 12,
-    "goals": 7,
     "assists": 23,
     "shots_on_goal": 45,
-    "key_passes": 65
+    "key_passes": 65,
+    "expected_goals": 6.312000000000002
   },
   {
     "matches": 34,
-    "goals": 21,
     "assists": 65,
     "shots_on_goal": 54,
-    "key_passes": 40
+    "key_passes": 40,
+    "expected_goals": 22.301
   },
   {
     "matches": 23,
-    "goals": 12,
     "assists": 39,
     "shots_on_goal": 43,
-    "key_passes": 56
+    "key_passes": 56,
+    "expected_goals": 14.563999999999998
   },
   {
     "matches": 10,
-    "goals": 4,
     "assists": 32,
     "shots_on_goal": 33,
-    "key_passes": 49
+    "key_passes": 49,
+    "expected_goals": 5.897
   },
   {
     "matches": 33,
-    "goals": 23,
     "assists": 44,
     "shots_on_goal": 56,
-    "key_passes": 44
+    "key_passes": 44,
+    "expected_goals": 21.014
   },
   {
     "matches": 31,
-    "goals": 25,
     "assists": 55,
     "shots_on_goal": 46,
-    "key_passes": 58
+    "key_passes": 58,
+    "expected_goals": 20.343
   },
   {
     "matches": 12,
-    "goals": 8,
     "assists": 32,
     "shots_on_goal": 55,
-    "key_passes": 43
+    "key_passes": 43,
+    "expected_goals": 6.043000000000002
   },
   {
     "matches": 10,
-    "goals": 9,
     "assists": 34,
     "shots_on_goal": 33,
-    "key_passes": 54
+    "key_passes": 54,
+    "expected_goals": 5.909
   },
   {
     "matches": 7,
-    "goals": 2,
     "assists": 122,
     "shots_on_goal": 67,
-    "key_passes": 33
+    "key_passes": 33,
+    "expected_goals": 3.7650000000000006
   },
   {
     "matches": 22,
-    "goals": 19,
     "assists": 238,
     "shots_on_goal": 79,
-    "key_passes": 55
+    "key_passes": 55,
+    "expected_goals": 15.920999999999998
   },
   {
     "matches": 33,
-    "goals": 21,
     "assists": 44,
     "shots_on_goal": 34,
-    "key_passes": 32
+    "key_passes": 32,
+    "expected_goals": 22.383999999999997
   },
   {
     "matches": 18,
-    "goals": 7,
     "assists": 248,
     "shots_on_goal": 127,
-    "key_passes": 48
+    "key_passes": 48,
+    "expected_goals": 10.524999999999999
   },
   {
     "matches": 18,
-    "goals": 9,
     "assists": 32,
     "shots_on_goal": 44,
-    "key_passes": 45
+    "key_passes": 45,
+    "expected_goals": 10.904
   },
   {
     "matches": 20,
-    "goals": 14,
     "assists": 233,
     "shots_on_goal": 146,
-    "key_passes": 80
+    "key_passes": 80,
+    "expected_goals": 10.305000000000001
   },
   {
     "matches": 18,
-    "goals": 5,
     "assists": 32,
     "shots_on_goal": 33,
-    "key_passes": 55
+    "key_passes": 55,
+    "expected_goals": 11.493
   },
   {
     "matches": 9,
-    "goals": 1,
     "assists": 78,
     "shots_on_goal": 56,
-    "key_passes": 23
+    "key_passes": 23,
+    "expected_goals": 4.958
   },
   {
     "matches": 20,
-    "goals": 12,
     "assists": 33,
     "shots_on_goal": 34,
-    "key_passes": 64
+    "key_passes": 64,
+    "expected_goals": 12.808999999999997
   },
   {
     "matches": 16,
-    "goals": 178,
     "assists": 95,
     "shots_on_goal": 47,
-    "key_passes": 24
+    "key_passes": 24,
+    "expected_goals": 10.767999999999999
   },
   {
     "matches": 34,
-    "goals": 17,
     "assists": 43,
     "shots_on_goal": 47,
-    "key_passes": 56
+    "key_passes": 56,
+    "expected_goals": 22.156
   },
   {
     "matches": 10,
-    "goals": 6,
     "assists": 126,
     "shots_on_goal": 56,
-    "key_passes": 34
+    "key_passes": 34,
+    "expected_goals": 6.604
   },
   {
     "matches": 30,
-    "goals": 20,
     "assists": 32,
     "shots_on_goal": 44,
-    "key_passes": 66
+    "key_passes": 66,
+    "expected_goals": 19.225999999999996
   },
   {
     "matches": 12,
-    "goals": 9,
     "assists": 34,
     "shots_on_goal": 44,
-    "key_passes": 57
+    "key_passes": 57,
+    "expected_goals": 6.650000000000001
   },
   {
     "matches": 33,
-    "goals": 23,
     "assists": 44,
     "shots_on_goal": 66,
-    "key_passes": 78
+    "key_passes": 78,
+    "expected_goals": 20.22
   },
   {
     "matches": 31,
-    "goals": 17,
     "assists": 304,
     "shots_on_goal": 128,
-    "key_passes": 75
+    "key_passes": 75,
+    "expected_goals": 20.631999999999998
   },
   {
     "matches": 33,
-    "goals": 21,
     "assists": 34,
     "shots_on_goal": 45,
-    "key_passes": 55
+    "key_passes": 55,
+    "expected_goals": 21.386999999999997
   },
   {
     "matches": 34,
-    "goals": 12,
     "assists": 55,
     "shots_on_goal": 77,
-    "key_passes": 67
+    "key_passes": 67,
+    "expected_goals": 20.572
   },
   {
     "matches": 22,
-    "goals": 13,
     "assists": 64,
     "shots_on_goal": 67,
-    "key_passes": 78
+    "key_passes": 78,
+    "expected_goals": 12.837
   },
   {
     "matches": 28,
-    "goals": 3,
     "assists": 277,
     "shots_on_goal": 128,
-    "key_passes": 49
+    "key_passes": 49,
+    "expected_goals": 18.108999999999998
   },
   {
     "matches": 8,
-    "goals": 2,
     "assists": 79,
     "shots_on_goal": 80,
-    "key_passes": 46
+    "key_passes": 46,
+    "expected_goals": 2.721
   },
   {
     "matches": 34,
-    "goals": 23,
     "assists": 32,
     "shots_on_goal": 33,
-    "key_passes": 44
+    "key_passes": 44,
+    "expected_goals": 22.823
   },
   {
     "matches": 16,
-    "goals": 4,
     "assists": 256,
     "shots_on_goal": 128,
-    "key_passes": 65
+    "key_passes": 65,
+    "expected_goals": 9.123999999999999
   },
   {
     "matches": 32,
-    "goals": 16,
     "assists": 28,
     "shots_on_goal": 65,
-    "key_passes": 67
+    "key_passes": 67,
+    "expected_goals": 19.304999999999996
   },
   {
     "matches": 34,
-    "goals": 23,
     "assists": 32,
     "shots_on_goal": 44,
-    "key_passes": 57
+    "key_passes": 57,
+    "expected_goals": 22.096
   },
   {
     "matches": 8,
-    "goals": 2,
     "assists": 66,
     "shots_on_goal": 55,
-    "key_passes": 30
+    "key_passes": 30,
+    "expected_goals": 4.019
   },
   {
     "matches": 20,
-    "goals": 7,
     "assists": 34,
     "shots_on_goal": 32,
-    "key_passes": 44
+    "key_passes": 44,
+    "expected_goals": 13.068
   },
   {
     "matches": 12,
-    "goals": 4,
     "assists": 33,
     "shots_on_goal": 44,
-    "key_passes": 64
+    "key_passes": 64,
+    "expected_goals": 6.587
   },
   {
     "matches": 32,
-    "goals": 20,
     "assists": 30,
     "shots_on_goal": 34,
-    "key_passes": 56
+    "key_passes": 56,
+    "expected_goals": 21.241999999999997
   },
   {
     "matches": 13,
-    "goals": 6,
     "assists": 222,
     "shots_on_goal": 69,
-    "key_passes": 34
+    "key_passes": 34,
+    "expected_goals": 9.964999999999998
   },
   {
     "matches": 34,
-    "goals": 23,
     "assists": 34,
     "shots_on_goal": 45,
-    "key_passes": 57
+    "key_passes": 57,
+    "expected_goals": 22.078999999999997
   },
   {
     "matches": 22,
-    "goals": 9,
     "assists": 334,
     "shots_on_goal": 204,
-    "key_passes": 104
+    "key_passes": 104,
+    "expected_goals": 10.268
   },
   {
     "matches": 18,
-    "goals": 7,
     "assists": 33,
     "shots_on_goal": 45,
-    "key_passes": 59
+    "key_passes": 59,
+    "expected_goals": 10.782
   },
   {
     "matches": 30,
-    "goals": 11,
     "assists": 349,
     "shots_on_goal": 233,
-    "key_passes": 80
+    "key_passes": 80,
+    "expected_goals": 14.647999999999996
   },
   {
     "matches": 33,
-    "goals": 16,
     "assists": 34,
     "shots_on_goal": 55,
-    "key_passes": 70
+    "key_passes": 70,
+    "expected_goals": 20.706999999999994
   },
   {
     "matches": 28,
-    "goals": 15,
     "assists": 450,
     "shots_on_goal": 103,
-    "key_passes": 49
+    "key_passes": 49,
+    "expected_goals": 23.217000000000002
   },
   {
     "matches": 19,
-    "goals": 11,
     "assists": 32,
     "shots_on_goal": 56,
-    "key_passes": 67
+    "key_passes": 67,
+    "expected_goals": 10.768
   },
   {
     "matches": 9,
-    "goals": 23,
     "assists": 367,
     "shots_on_goal": 200,
-    "key_passes": 90
+    "key_passes": 90,
+    "expected_goals": 2.1290000000000022
   },
   {
     "matches": 6,
-    "goals": 1,
     "assists": 109,
     "shots_on_goal": 84,
-    "key_passes": 32
+    "key_passes": 32,
+    "expected_goals": 1.7910000000000006
   },
   {
     "matches": 34,
-    "goals": 26,
     "assists": 45,
     "shots_on_goal": 76,
-    "key_passes": 77
+    "key_passes": 77,
+    "expected_goals": 20.361
   },
   {
     "matches": 26,
-    "goals": 16,
     "assists": 289,
     "shots_on_goal": 245,
-    "key_passes": 75
+    "key_passes": 75,
+    "expected_goals": 9.893999999999997
   },
   {
     "matches": 24,
-    "goals": 7,
     "assists": 44,
     "shots_on_goal": 65,
-    "key_passes": 80
+    "key_passes": 80,
+    "expected_goals": 13.930999999999997
   },
   {
     "matches": 30,
-    "goals": 21,
     "assists": 44,
     "shots_on_goal": 55,
-    "key_passes": 59
+    "key_passes": 59,
+    "expected_goals": 18.870999999999995
   },
   {
     "matches": 20,
-    "goals": 3,
     "assists": 22,
     "shots_on_goal": 43,
-    "key_passes": 56
+    "key_passes": 56,
+    "expected_goals": 12.094999999999997
   },
   {
     "matches": 9,
-    "goals": 1,
     "assists": 103,
     "shots_on_goal": 88,
-    "key_passes": 34
+    "key_passes": 34,
+    "expected_goals": 3.5290000000000004
   },
   {
     "matches": 25,
-    "goals": 4,
     "assists": 32,
     "shots_on_goal": 54,
-    "key_passes": 70
+    "key_passes": 70,
+    "expected_goals": 15.091999999999997
   },
   {
     "matches": 12,
-    "goals": 1,
     "assists": 33,
     "shots_on_goal": 44,
-    "key_passes": 50
+    "key_passes": 50,
+    "expected_goals": 6.671
   },
   {
     "matches": 27,
-    "goals": 8,
     "assists": 35,
     "shots_on_goal": 37,
-    "key_passes": 50
+    "key_passes": 50,
+    "expected_goals": 17.685999999999996
   },
   {
     "matches": 14,
-    "goals": 20,
     "assists": 201,
     "shots_on_goal": 76,
-    "key_passes": 45
+    "key_passes": 45,
+    "expected_goals": 9.749
   },
   {
     "matches": 33,
-    "goals": 17,
     "assists": 33,
     "shots_on_goal": 49,
-    "key_passes": 60
+    "key_passes": 60,
+    "expected_goals": 21.1
   },
   {
     "matches": 18,
-    "goals": 7,
     "assists": 129,
     "shots_on_goal": 90,
-    "key_passes": 42
+    "key_passes": 42,
+    "expected_goals": 10.245
   },
   {
     "matches": 20,
-    "goals": 4,
     "assists": 124,
     "shots_on_goal": 88,
-    "key_passes": 40
+    "key_passes": 40,
+    "expected_goals": 11.677999999999999
   },
   {
     "matches": 33,
-    "goals": 21,
     "assists": 29,
     "shots_on_goal": 44,
-    "key_passes": 46
+    "key_passes": 46,
+    "expected_goals": 21.394999999999996
   },
   {
     "matches": 8,
-    "goals": 2,
     "assists": 100,
     "shots_on_goal": 56,
-    "key_passes": 30
+    "key_passes": 30,
+    "expected_goals": 4.6739999999999995
   },
   {
     "matches": 23,
-    "goals": 2,
     "assists": 25,
     "shots_on_goal": 39,
-    "key_passes": 40
+    "key_passes": 40,
+    "expected_goals": 14.601999999999997
   },
   {
     "matches": 12,
-    "goals": 2,
     "assists": 220,
     "shots_on_goal": 68,
-    "key_passes": 35
+    "key_passes": 35,
+    "expected_goals": 9.271999999999998
   },
   {
     "matches": 15,
-    "goals": 12,
     "assists": 450,
     "shots_on_goal": 108,
-    "key_passes": 60
+    "key_passes": 60,
+    "expected_goals": 13.704
   },
   {
     "matches": 34,
-    "goals": 26,
     "assists": 50,
     "shots_on_goal": 66,
-    "key_passes": 78
+    "key_passes": 78,
+    "expected_goals": 21.05
   },
   {
     "matches": 23,
-    "goals": 18,
     "assists": 507,
     "shots_on_goal": 198,
-    "key_passes": 75
+    "key_passes": 75,
+    "expected_goals": 15.133000000000003
   },
   {
     "matches": 30,
-    "goals": 24,
     "assists": 45,
     "shots_on_goal": 55,
-    "key_passes": 78
+    "key_passes": 78,
+    "expected_goals": 18.777999999999995
   },
   {
     "matches": 18,
-    "goals": 5,
     "assists": 308,
     "shots_on_goal": 108,
-    "key_passes": 80
+    "key_passes": 80,
+    "expected_goals": 12.713999999999999
   },
   {
     "matches": 30,
-    "goals": 17,
     "assists": 34,
     "shots_on_goal": 46,
-    "key_passes": 50
+    "key_passes": 50,
+    "expected_goals": 19.245999999999995
   },
   {
     "matches": 20,
-    "goals": 14,
     "assists": 45,
     "shots_on_goal": 54,
-    "key_passes": 60
+    "key_passes": 60,
+    "expected_goals": 11.905
   },
   {
     "matches": 30,
-    "goals": 15,
     "assists": 34,
     "shots_on_goal": 40,
-    "key_passes": 50
+    "key_passes": 50,
+    "expected_goals": 19.599999999999994
   },
   {
     "matches": 21,
-    "goals": 8,
     "assists": 33,
     "shots_on_goal": 45,
-    "key_passes": 65
+    "key_passes": 65,
+    "expected_goals": 12.857999999999999
   },
   {
     "matches": 15,
-    "goals": 25,
     "assists": 27,
     "shots_on_goal": 44,
-    "key_passes": 44
+    "key_passes": 44,
+    "expected_goals": 8.693
   },
   {
     "matches": 17,
-    "goals": 9,
     "assists": 23,
     "shots_on_goal": 37,
-    "key_passes": 32
+    "key_passes": 32,
+    "expected_goals": 10.502
   },
   {
     "matches": 36,
-    "goals": 32,
     "assists": 49,
     "shots_on_goal": 50,
-    "key_passes": 56
+    "key_passes": 56,
+    "expected_goals": 23.512999999999998
   },
   {
     "matches": 22,
-    "goals": 10,
     "assists": 20,
     "shots_on_goal": 36,
-    "key_passes": 39
+    "key_passes": 39,
+    "expected_goals": 13.976
   },
   {
     "matches": 29,
-    "goals": 36,
     "assists": 30,
     "shots_on_goal": 50,
-    "key_passes": 60
+    "key_passes": 60,
+    "expected_goals": 18.162
   },
   {
     "matches": 39,
-    "goals": 19,
     "assists": 33,
     "shots_on_goal": 45,
-    "key_passes": 50
+    "key_passes": 50,
+    "expected_goals": 25.619999999999997
   },
   {
     "matches": 28,
-    "goals": 14,
     "assists": 38,
     "shots_on_goal": 44,
-    "key_passes": 56
+    "key_passes": 56,
+    "expected_goals": 18.004
   },
   {
     "matches": 15,
-    "goals": 2,
     "assists": 29,
     "shots_on_goal": 35,
-    "key_passes": 39
+    "key_passes": 39,
+    "expected_goals": 9.296
   },
   {
     "matches": 20,
-    "goals": 5,
     "assists": 20,
     "shots_on_goal": 30,
-    "key_passes": 37
+    "key_passes": 37,
+    "expected_goals": 12.934
   },
   {
     "matches": 35,
-    "goals": 17,
     "assists": 29,
     "shots_on_goal": 32,
-    "key_passes": 38
+    "key_passes": 38,
+    "expected_goals": 23.558999999999997
   },
   {
     "matches": 20,
-    "goals": 2,
     "assists": 32,
     "shots_on_goal": 37,
-    "key_passes": 40
+    "key_passes": 40,
+    "expected_goals": 12.754999999999999
   },
   {
     "matches": 33,
-    "goals": 19,
     "assists": 29,
     "shots_on_goal": 34,
-    "key_passes": 43
+    "key_passes": 43,
+    "expected_goals": 22.002999999999997
   },
   {
     "matches": 21,
-    "goals": 10,
     "assists": 30,
     "shots_on_goal": 39,
-    "key_passes": 47
+    "key_passes": 47,
+    "expected_goals": 13.257
   },
   {
     "matches": 28,
-    "goals": 13,
     "assists": 47,
     "shots_on_goal": 59,
-    "key_passes": 60
+    "key_passes": 60,
+    "expected_goals": 17.284
   },
   {
     "matches": 18,
-    "goals": 4,
     "assists": 45,
     "shots_on_goal": 49,
-    "key_passes": 76
+    "key_passes": 76,
+    "expected_goals": 10.696
   },
   {
     "matches": 10,
-    "goals": 1,
     "assists": 22,
     "shots_on_goal": 34,
-    "key_passes": 50
+    "key_passes": 50,
+    "expected_goals": 5.621999999999999
   },
   {
     "matches": 20,
-    "goals": 9,
     "assists": 39,
     "shots_on_goal": 68,
-    "key_passes": 70
+    "key_passes": 70,
+    "expected_goals": 10.892999999999999
   },
   {
     "matches": 30,
-    "goals": 12,
     "assists": 33,
     "shots_on_goal": 49,
-    "key_passes": 50
+    "key_passes": 50,
+    "expected_goals": 19.048
   },
   {
     "matches": 33,
-    "goals": 14,
     "assists": 35,
     "shots_on_goal": 45,
-    "key_passes": 50
+    "key_passes": 50,
+    "expected_goals": 21.437999999999995
   },
   {
     "matches": 27,
-    "goals": 13,
     "assists": 29,
     "shots_on_goal": 40,
-    "key_passes": 45
+    "key_passes": 45,
+    "expected_goals": 17.413
   },
   {
     "matches": 17,
-    "goals": 5,
     "assists": 26,
     "shots_on_goal": 34,
-    "key_passes": 45
+    "key_passes": 45,
+    "expected_goals": 10.664
   },
   {
     "matches": 33,
-    "goals": 20,
     "assists": 66,
     "shots_on_goal": 69,
-    "key_passes": 70
+    "key_passes": 70,
+    "expected_goals": 20.552999999999997
   },
   {
     "matches": 19,
-    "goals": 10,
     "assists": 27,
     "shots_on_goal": 29,
-    "key_passes": 38
+    "key_passes": 38,
+    "expected_goals": 12.43
   },
   {
     "matches": 30,
-    "goals": 22,
     "assists": 36,
     "shots_on_goal": 46,
-    "key_passes": 55
+    "key_passes": 55,
+    "expected_goals": 19.258
   },
   {
     "matches": 26,
-    "goals": 19,
     "assists": 32,
     "shots_on_goal": 47,
-    "key_passes": 67
+    "key_passes": 67,
+    "expected_goals": 16.226999999999997
   },
   {
     "matches": 25,
-    "goals": 16,
     "assists": 29,
     "shots_on_goal": 35,
-    "key_passes": 50
+    "key_passes": 50,
+    "expected_goals": 16.269999999999996
   },
   {
     "matches": 10,
-    "goals": 2,
     "assists": 37,
     "shots_on_goal": 55,
-    "key_passes": 70
+    "key_passes": 70,
+    "expected_goals": 4.577999999999999
   },
   {
     "matches": 30,
-    "goals": 18,
     "assists": 44,
     "shots_on_goal": 56,
-    "key_passes": 76
+    "key_passes": 76,
+    "expected_goals": 18.709999999999997
   },
   {
     "matches": 18,
-    "goals": 6,
     "assists": 30,
     "shots_on_goal": 66,
-    "key_passes": 77
+    "key_passes": 77,
+    "expected_goals": 9.372
   },
   {
     "matches": 20,
-    "goals": 13,
     "assists": 44,
     "shots_on_goal": 67,
-    "key_passes": 89
+    "key_passes": 89,
+    "expected_goals": 10.942999999999998
   },
   {
     "matches": 33,
-    "goals": 20,
     "assists": 66,
     "shots_on_goal": 88,
-    "key_passes": 78
+    "key_passes": 78,
+    "expected_goals": 19.383999999999997
   },
   {
     "matches": 12,
-    "goals": 4,
     "assists": 23,
     "shots_on_goal": 47,
-    "key_passes": 66
+    "key_passes": 66,
+    "expected_goals": 6.1880000000000015
   },
   {
     "matches": 32,
-    "goals": 18,
     "assists": 55,
     "shots_on_goal": 67,
-    "key_passes": 70
+    "key_passes": 70,
+    "expected_goals": 19.735999999999997
   },
   {
     "matches": 28,
-    "goals": 11,
     "assists": 37,
     "shots_on_goal": 48,
-    "key_passes": 50
+    "key_passes": 50,
+    "expected_goals": 17.782999999999998
   },
   {
     "matches": 30,
-    "goals": 16,
     "assists": 33,
     "shots_on_goal": 69,
-    "key_passes": 70
+    "key_passes": 70,
+    "expected_goals": 17.747999999999998
   },
   {
     "matches": 22,
-    "goals": 9,
     "assists": 44,
     "shots_on_goal": 77,
-    "key_passes": 80
+    "key_passes": 80,
+    "expected_goals": 11.815000000000001
   },
   {
     "matches": 20,
-    "goals": 7,
     "assists": 29,
     "shots_on_goal": 37,
-    "key_passes": 50
+    "key_passes": 50,
+    "expected_goals": 12.631999999999998
   },
   {
     "matches": 10,
-    "goals": 2,
     "assists": 26,
     "shots_on_goal": 43,
-    "key_passes": 48
+    "key_passes": 48,
+    "expected_goals": 5.1869999999999985
   },
   {
     "matches": 32,
-    "goals": 19,
     "assists": 54,
     "shots_on_goal": 65,
-    "key_passes": 78
+    "key_passes": 78,
+    "expected_goals": 19.784999999999997
   },
   {
     "matches": 29,
-    "goals": 16,
     "assists": 48,
     "shots_on_goal": 76,
-    "key_passes": 86
+    "key_passes": 86,
+    "expected_goals": 16.85
   },
   {
     "matches": 31,
-    "goals": 18,
     "assists": 44,
     "shots_on_goal": 87,
-    "key_passes": 65
+    "key_passes": 65,
+    "expected_goals": 17.650999999999996
   },
   {
     "matches": 21,
-    "goals": 12,
     "assists": 8,
     "shots_on_goal": 22,
-    "key_passes": 38
+    "key_passes": 38,
+    "expected_goals": 13.851999999999999
   },
   {
     "matches": 33,
-    "goals": 19,
     "assists": 42,
     "shots_on_goal": 56,
-    "key_passes": 60
+    "key_passes": 60,
+    "expected_goals": 20.876
   },
   {
     "matches": 22,
-    "goals": 9,
     "assists": 450,
     "shots_on_goal": 200,
-    "key_passes": 105
+    "key_passes": 105,
+    "expected_goals": 12.934000000000001
   },
   {
     "matches": 17,
-    "goals": 8,
     "assists": 330,
     "shots_on_goal": 200,
-    "key_passes": 100
+    "key_passes": 100,
+    "expected_goals": 6.924000000000003
   },
   {
     "matches": 24,
-    "goals": 14,
     "assists": 550,
     "shots_on_goal": 195,
-    "key_passes": 107
+    "key_passes": 107,
+    "expected_goals": 16.725
   },
   {
     "matches": 26,
-    "goals": 13,
     "assists": 607,
     "shots_on_goal": 300,
-    "key_passes": 135
+    "key_passes": 135,
+    "expected_goals": 12.966999999999997
   },
   {
     "matches": 15,
-    "goals": 4,
     "assists": 234,
     "shots_on_goal": 107,
-    "key_passes": 50
+    "key_passes": 50,
+    "expected_goals": 9.286999999999999
   },
   {
     "matches": 19,
-    "goals": 8,
     "assists": 307,
     "shots_on_goal": 190,
-    "key_passes": 80
+    "key_passes": 80,
+    "expected_goals": 8.559
   },
   {
     "matches": 16,
-    "goals": 2,
     "assists": 240,
     "shots_on_goal": 160,
-    "key_passes": 60
+    "key_passes": 60,
+    "expected_goals": 6.930000000000001
   },
   {
     "matches": 23,
-    "goals": 12,
     "assists": 408,
     "shots_on_goal": 233,
-    "key_passes": 105
+    "key_passes": 105,
+    "expected_goals": 10.809
   },
   {
     "matches": 30,
-    "goals": 20,
     "assists": 650,
     "shots_on_goal": 230,
-    "key_passes": 105
+    "key_passes": 105,
+    "expected_goals": 20.996
   },
   {
     "matches": 27,
-    "goals": 13,
     "assists": 400,
     "shots_on_goal": 250,
-    "key_passes": 100
+    "key_passes": 100,
+    "expected_goals": 12.483999999999996
   },
   {
     "matches": 14,
-    "goals": 3,
     "assists": 370,
     "shots_on_goal": 220,
-    "key_passes": 90
+    "key_passes": 90,
+    "expected_goals": 4.532000000000001
   }
 ]
