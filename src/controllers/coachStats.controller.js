@@ -363,9 +363,9 @@ export const getPlayerStatsAverage = async (req, res) => {
   try {
     const playerId = req.params.playerId;
 
-    // 1) Get team id
+    // 1) Get team id and player name
     const [playerRow] = await pool.query(
-      `SELECT team_id FROM players WHERE p_id = ?`,
+      `SELECT team_id, p_name FROM players WHERE p_id = ?`,
       [playerId]
     );
 
@@ -456,7 +456,8 @@ export const getPlayerStatsAverage = async (req, res) => {
       player: playerStats,
       team: teamStats,
       rawPlayer,
-      rawTeam
+      rawTeam,
+      playerName: playerRow[0].p_name || "",
     });
 
   } catch (err) {
