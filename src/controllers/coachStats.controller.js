@@ -1,16 +1,8 @@
 // src/controllers/coachStats.controller.js
 import crypto from "crypto";
-import { readFileSync } from "fs";
-import { fileURLToPath } from "url";
-import { dirname, join } from "path";
 import { pool } from "../../config/db.js";
 import { mailer } from "../../utils/mailer.js";
 import { linearRegression, poissonDistribution } from "../utils/mathStats.js";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const surveyData = JSON.parse(
-  readFileSync(join(__dirname, "../data/expectedGoalsSurvey.json"), "utf-8")
-);
 
 // Stats tracked per player/team that the probability framework can be generalized to
 const PROBABILITY_STAT_KEYS = [
@@ -879,10 +871,15 @@ export const getExpectedGoals = async (req, res) => {
       return res.status(404).json({ message: "No stats found for this player" });
     }
 
-    const allRows = [...surveyData, ...rows];
+    if (rows.length < 6) {
+      return res.status(400).json({
+        message: "Not enough player stats recorded yet to build a prediction model",
+        sampleSize: rows.length,
+      });
+    }
 
-    const X = allRows.map((r) => [1, r.matches || 0, r.assists || 0, r.shots_on_goal || 0, r.key_passes || 0]);
-    const y = allRows.map((r) => r.goals || 0);
+    const X = rows.map((r) => [1, r.matches || 0, r.assists || 0, r.shots_on_goal || 0, r.key_passes || 0]);
+    const y = rows.map((r) => r.goals || 0);
 
     const [intercept, bMatches, bAssists, bShotsOnGoal, bKeyPasses] = linearRegression(X, y);
 
@@ -906,7 +903,7 @@ export const getExpectedGoals = async (req, res) => {
         shotsOnGoal: bShotsOnGoal,
         keyPasses: bKeyPasses,
       },
-      sampleSize: allRows.length,
+      sampleSize: rows.length,
     });
   } catch (err) {
     console.error("getExpectedGoals error:", err);
