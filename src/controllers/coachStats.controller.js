@@ -415,16 +415,18 @@ export const getPlayerStatsAverage = async (req, res) => {
     // ⭐ Raw player values (actual stored values, no averaging)
     const rawPlayer = { ...p };
 
-    // 3) Latest team stat
+    // 3) Team stat for the SAME year as the player's latest stats record
+    //    (team_stats can have rows for multiple years; must match the player's year,
+    //    not just whichever team_stats row was created most recently)
     const [teamRows] = await pool.query(
       `
       SELECT *
       FROM team_stats
-      WHERE team_id = ?
+      WHERE team_id = ? AND year = ?
       ORDER BY created_at DESC
       LIMIT 1
       `,
-      [teamId]
+      [teamId, p.year]
     );
 
     const t = teamRows[0] || {};
@@ -951,8 +953,8 @@ export const getStatProbabilities = async (req, res) => {
     const pm = p.matches || 0;
 
     const [tRows] = await pool.query(
-      `SELECT * FROM team_stats WHERE team_id = ? ORDER BY created_at DESC LIMIT 1`,
-      [teamId]
+      `SELECT * FROM team_stats WHERE team_id = ? AND year = ? ORDER BY created_at DESC LIMIT 1`,
+      [teamId, p.year]
     );
     const t = tRows[0] || {};
     const tm = t.matches || 0;
