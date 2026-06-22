@@ -626,11 +626,11 @@ const applyStatsUpdate = async (playerId, data) => {
       )
       SELECT
         p.team_id, ps.year,
-        ? AS matches,
+        MAX(ps.matches) AS matches,
         SUM(ps.goals), SUM(ps.assists), SUM(ps.shots), SUM(ps.shots_on_goal),
         SUM(ps.big_chances), SUM(ps.key_passes), SUM(ps.tackles),
         AVG(ps.pass_completion_pct),
-        (? * 90) AS minutes,
+        MAX(ps.matches) * 90 AS minutes,
         SUM(ps.cautions), SUM(ps.ejections), SUM(ps.progressive_carries), SUM(ps.defensive_actions),
         NOW()
       FROM players p
@@ -638,7 +638,7 @@ const applyStatsUpdate = async (playerId, data) => {
       WHERE p.team_id = ? AND ps.year = ?
       GROUP BY p.team_id, ps.year
       `,
-      [matches, matches, teamId, year]
+      [teamId, year]
     );
   } else {
     await pool.query(
@@ -648,6 +648,7 @@ const applyStatsUpdate = async (playerId, data) => {
         SELECT
           p.team_id,
           ps.year,
+          MAX(ps.matches) AS matches,
           SUM(ps.goals) AS goals,
           SUM(ps.assists) AS assists,
           SUM(ps.shots) AS shots,
@@ -656,7 +657,7 @@ const applyStatsUpdate = async (playerId, data) => {
           SUM(ps.key_passes) AS key_passes,
           SUM(ps.tackles) AS tackles,
           AVG(ps.pass_completion_pct) AS pass_completion_pct,
-          (? * 90) AS minutes,
+          MAX(ps.matches) * 90 AS minutes,
           SUM(ps.cautions) AS cautions,
           SUM(ps.ejections) AS ejections,
           SUM(ps.progressive_carries) AS progressive_carries,
@@ -668,7 +669,7 @@ const applyStatsUpdate = async (playerId, data) => {
       ) x
       ON ts.team_id = x.team_id AND ts.year = x.year
       SET
-        ts.matches = ?,
+        ts.matches = x.matches,
         ts.goals = x.goals,
         ts.assists = x.assists,
         ts.shots = x.shots,
@@ -683,7 +684,7 @@ const applyStatsUpdate = async (playerId, data) => {
         ts.progressive_carries = x.progressive_carries,
         ts.defensive_actions = x.defensive_actions
       `,
-      [matches, teamId, year, matches]
+      [teamId, year]
     );
   }
 
